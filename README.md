@@ -90,7 +90,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 </Project>
 ```
 
-## HTTP Error 500.24 – Internal Server Error
+![Publish WebApi](https://github.com/gtechsltn/TalentManagementApi/assets/87538251/d8b1dba8-0274-4136-8075-c1a70e2cb506)
+
+
+## HTTP Error 500.24 â€“ Internal Server Error
 
 https://www.rocktonsoftware.com/knowledge-base/http-error-500-24-internal-server-error/
 
