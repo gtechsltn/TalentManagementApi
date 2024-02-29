@@ -40,3 +40,7 @@ Demonstrates effective communication between the Angular frontend and the .NET C
 # Contributing
 Contributions to enhance the project are welcome. Please follow the standard fork-and-pull request workflow. Make sure to adhere to coding standards and provide adequate documentation for your contributions.
 
+# References
++ [Angular 17 and .NET Core 8: CQRS and Mediator Pattern for CRUD Operations in REST API](https://medium.com/scrum-and-coke/angular-17-and-net-core-8-cqrs-and-mediator-pattern-for-crud-operations-in-rest-api-8af8995d2671)
++ [Create Dynamic Sorting in Your .NET API in 5 minutes](https://medium.com/bina-nusantara-it-division/create-dynamic-sorting-in-your-net-api-in-5-minutes-17a0c8c625c8)
++ [EF Core order by string column name](https://dev.to/karenpayneoregon/ef-core-order-by-string-column-name-4549)
