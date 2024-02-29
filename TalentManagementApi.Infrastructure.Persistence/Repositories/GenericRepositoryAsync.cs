@@ -63,7 +63,7 @@ namespace TalentManagementApi.Infrastructure.Persistence.Repository
             //}
         }
 
-        public async Task<IEnumerable<T>> GetPagedReponseAsync(int pageNumber, int pageSize)
+        public async Task<IEnumerable<T>> GetPagedResponseAsync(int pageNumber, int pageSize)
         {
             return await _dbContext
                 .Set<T>()
@@ -73,7 +73,7 @@ namespace TalentManagementApi.Infrastructure.Persistence.Repository
                 .ToListAsync();
         }
 
-        public async Task<IEnumerable<T>> GetPagedAdvancedReponseAsync(int pageNumber, int pageSize, string orderBy, string fields, ExpressionStarter<T> predicate)
+        public async Task<IEnumerable<T>> GetPagedAdvancedResponseAsync(int pageNumber, int pageSize, string orderBy, string fields, ExpressionStarter<T> predicate)
         {
             return await _dbContext
                 .Set<T>()
@@ -89,11 +89,33 @@ namespace TalentManagementApi.Infrastructure.Persistence.Repository
         public async Task<IEnumerable<T>> GetAllShapeAsync(string orderBy, string fields)
         {
             return await _dbContext
+            .Set<T>()
+            .Select<T>("new(" + fields + ")")
+            .OrderBy(orderBy)
+            .AsNoTracking()
+            .ToListAsync();
+        }
+
+        public async Task<IEnumerable<T>> GetAllShapeAsync(string orderBy, string orderType, string fields)
+        {
+            if (string.Equals(orderType, "desc", StringComparison.OrdinalIgnoreCase))
+            {
+                return await _dbContext
                 .Set<T>()
                 .Select<T>("new(" + fields + ")")
-                .OrderBy(orderBy)
+                .OrderBy(orderBy + " desc")
                 .AsNoTracking()
                 .ToListAsync();
+            }
+            else
+            {
+                return await _dbContext
+                .Set<T>()
+                .Select<T>("new(" + fields + ")")
+                .OrderBy(orderBy + " asc")
+                .AsNoTracking()
+                .ToListAsync();
+            }
         }
     }
 }

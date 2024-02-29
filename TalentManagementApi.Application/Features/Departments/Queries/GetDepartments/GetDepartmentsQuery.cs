@@ -49,14 +49,23 @@ namespace TalentManagementApi.Application.Features.Departments.Queries.GetDepart
         {
             string fields = _modelHelper.GetModelFields<GetDepartmentsViewModel>();
             string defaultOrderByColumn = "Name";
+            string defaultOrderTypeValue = "asc";
 
             string orderBy = string.Empty;
+            string orderType = string.Empty;
 
-            // if the request orderby is not null
+            // if the request orderBy is not null
             if (!string.IsNullOrEmpty(request.OrderBy))
             {
                 // check to make sure order by field is valid and in the view model
                 orderBy = _modelHelper.ValidateModelFields<GetDepartmentsViewModel>(request.OrderBy);
+            }
+
+            // if the request orderType is not null
+            if (!string.IsNullOrEmpty(request.OrderType))
+            {
+                // check to make sure order by field is valid
+                orderType = request.OrderType;
             }
 
             // if the order by is invalid
@@ -66,7 +75,14 @@ namespace TalentManagementApi.Application.Features.Departments.Queries.GetDepart
                 orderBy = defaultOrderByColumn;
             }
 
-            var data = await _repository.GetAllShapeAsync(orderBy, fields);
+            // if the order type is invalid
+            if (string.IsNullOrEmpty(orderType))
+            {
+                //default order type is 'ASC'
+                orderType = defaultOrderTypeValue;
+            }
+
+            var data = await _repository.GetAllShapeAsync(orderBy, orderType, fields);
 
             // automap to ViewModel
             var viewModel = _mapper.Map<IEnumerable<GetDepartmentsViewModel>>(data);

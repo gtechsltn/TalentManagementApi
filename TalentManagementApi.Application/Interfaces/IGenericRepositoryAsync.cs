@@ -19,10 +19,11 @@ namespace TalentManagementApi.Application.Interfaces
 
         Task BulkInsertAsync(IEnumerable<T> entities);
 
-        Task<IEnumerable<T>> GetPagedReponseAsync(int pageNumber, int pageSize);
+        Task<IEnumerable<T>> GetPagedResponseAsync(int pageNumber, int pageSize);
 
-        Task<IEnumerable<T>> GetPagedAdvancedReponseAsync(int pageNumber, int pageSize, string orderBy, string fields, ExpressionStarter<T> predicate);
+        Task<IEnumerable<T>> GetPagedAdvancedResponseAsync(int pageNumber, int pageSize, string orderBy, string fields, ExpressionStarter<T> predicate);
 
         Task<IEnumerable<T>> GetAllShapeAsync(string orderBy, string fields);
+        Task<IEnumerable<T>> GetAllShapeAsync(string orderBy, string orderType, string fields);
     }
 }

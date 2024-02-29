@@ -20,6 +20,7 @@ namespace TalentManagementApi.Application.Helpers
             var bindingFlags = System.Reflection.BindingFlags.Instance |
                                 System.Reflection.BindingFlags.NonPublic |
                                 System.Reflection.BindingFlags.Public;
+            
             var allowedFields = typeof(T).GetProperties(bindingFlags).Select(f => f.Name).ToList();
 
             // Convert the fields to array
@@ -54,6 +55,7 @@ namespace TalentManagementApi.Application.Helpers
             var bindingFlags = System.Reflection.BindingFlags.Instance |
                                 System.Reflection.BindingFlags.NonPublic |
                                 System.Reflection.BindingFlags.Public;
+            
             var allowedFields = typeof(T).GetProperties(bindingFlags).Select(f => f.Name).ToList();
 
             retString = string.Join(", ", allowedFields);
